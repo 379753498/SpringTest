@@ -17,7 +17,7 @@ public class Factory implements ApplicationContextAware, BeanFactoryAware {
 
 	public BeanFactory getBeanFactory() {
 		return beanFactory;
-		return beanFactory;
+		
 	}
 
 	public ApplicationContext getApplicationContext() {
