@@ -13,7 +13,7 @@ public class SpringUtil implements ApplicationContextAware{
 	@SuppressWarnings("unused")
 	public SpringUtil()
 	{
-
+11
 		
 	ApplicationContext ctx=new  FileSystemXmlApplicationContext("classpath:**/applicationContext*.xml");
 	this.applicationContext=ctx;
