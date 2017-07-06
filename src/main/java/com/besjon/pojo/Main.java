@@ -1,26 +1,84 @@
 package com.besjon.pojo;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import com.baidu.translate.demo.ApiFactory;
+import com.baidu.translate.demo.Language;
 import com.baidu.translate.demo.TransApi;
 import com.besjon.pojo.JsonRootBean;
 import com.besjon.pojo.Trans_result;
 
+
+/**
+ * 
+ * 实现百度翻译api的调用
+ * 
+ * 语言简写	名称
+auto	自动检测
+zh	中文
+en	英语
+yue	粤语
+wyw	文言文
+jp	日语
+kor	韩语
+fra	法语
+spa	西班牙语
+th	泰语
+ara	阿拉伯语
+ru	俄语
+pt	葡萄牙语
+de	德语
+it	意大利语
+el	希腊语
+nl	荷兰语
+pl	波兰语
+bul	保加利亚语
+est	爱沙尼亚语
+dan	丹麦语
+fin	芬兰语
+cs	捷克语
+rom	罗马尼亚语
+slo	斯洛文尼亚语
+swe	瑞典语
+hu	匈牙利语
+cht	繁体中文
+vie	越南语
+ *@Title:  
+ *@Description:  
+ *@Author:Administrator  
+ *@Since:2017年7月6日  
+ *@Version:1.1.0
+ */
 public class Main {
 
-    // 在平台申请的APP_ID 详见 http://api.fanyi.baidu.com/api/trans/product/desktop?req=developer
-    private static final String APP_ID = "20170705000062796";
-    private static final String SECURITY_KEY = "2M9FsAYu7EXaSBjenGA7";
+ 
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        TransApi api = new TransApi(APP_ID, SECURITY_KEY);
+     
+    	
+    	TransApi transApi = ApiFactory.getTransApi();
+//    	BaiduFanyi(transApi, "语言", "en");
+//    	BaiduFanyi(transApi, "素人的框架是最棒的吗", "jp");
+    	
+    	HashMap<String, String> getlanguagemap = Language.getlanguagemap();
+    	
+    	for (String string : getlanguagemap.keySet()) {
+    		
+    		System.out.println(getlanguagemap.get(string));
+    		BaiduFanyi(transApi, "加油！我要", string);
+    	
+		}
+    	
+    }
 
-        String query = "thank you ";
-        String transResult = api.getTransResult(query, "auto", "zh");
+	public static void BaiduFanyi(TransApi api ,String query ,String to ) throws UnsupportedEncodingException {
+
+        String transResult = api.getTransResult(query, "auto", to);
         JSONObject  jsonarray = JSONObject.fromObject(transResult);
         Object object = jsonarray.get("from");
         JsonRootBean josnb= new JsonRootBean();
@@ -43,8 +101,6 @@ public class Main {
         josnb.setTrans_result(arrayList);
         
         System.out.println(josnb.toString());
-     
-        
-    }
+	}
 
 }
