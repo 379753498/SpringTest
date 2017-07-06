@@ -69,9 +69,11 @@ public class Main {
     	
     	for (String string : getlanguagemap.keySet()) {
     		
-    		System.out.println(getlanguagemap.get(string));
-    		BaiduFanyi(transApi, "加油！我要", string);
-    	
+    		System.out.println(getlanguagemap.get(string));    		
+    		
+
+    		BaiduFanyi(transApi, "程刚是帅哥", string);
+    		System.out.println("--------------------------");
 		}
     	
     }
