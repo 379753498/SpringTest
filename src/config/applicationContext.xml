@@ -14,8 +14,8 @@
 	<context:component-scan base-package="com.xj.aop" />
 	
 	<bean id="MyBeanPostProcessor" class="com.xj.Spring.MyBeanPostProcessor"></bean>
-	<bean id="myMethodBeforeAdvice" class="com.xj.aop.myMethodBeforeAdvice"></bean>
-	
 
+	
+  <!-- <aop:aspectj-autoproxy/>   -->
 	
 </beans>
