@@ -67,15 +67,17 @@ public class Main {
     	
     	HashMap<String, String> getlanguagemap = Language.getlanguagemap();
     	
-    	for (String string : getlanguagemap.keySet()) {
-    		
-    		System.out.println(getlanguagemap.get(string));    		
-    		
-
-    		BaiduFanyi(transApi, "程刚是帅哥", string);
-    		System.out.println("--------------------------");
-		}
+//    	for (String string : getlanguagemap.keySet()) {
+//    		
+//    		System.out.println(getlanguagemap.get(string));    		
+//    		
+//
+//    		BaiduFanyi(transApi, "程刚是帅哥", string);
+//    		System.out.println("--------------------------");
+//		}
     	
+    	
+    	BaiduFanyi(transApi, "Jenkins is a self-contained, open source automation server which can be used to automate all sorts of tasks such as building, testing, and deploying software. Jenkins can be installed through native system packages, Docker, or even run standalone by any machine with the Java Runtime Environment installed", "zh");
     }
 
 	public static void BaiduFanyi(TransApi api ,String query ,String to ) throws UnsupportedEncodingException {

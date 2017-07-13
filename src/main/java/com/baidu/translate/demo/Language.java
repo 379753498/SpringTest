@@ -37,7 +37,7 @@ import java.util.HashMap;
 
 public class Language {
 
-	 private static HashMap<String, String>  hs = null;  
+	 private  static HashMap<String, String>  hs = null;  
 		
 	
 	public static HashMap<String, String>  getlanguagemap() {

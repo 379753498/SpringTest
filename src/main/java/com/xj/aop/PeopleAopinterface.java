@@ -7,5 +7,5 @@ public interface PeopleAopinterface {
 
 	void sayhello();
 	
-	
+	String sayhello(String s);
 }

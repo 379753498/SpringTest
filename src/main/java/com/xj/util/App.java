@@ -12,8 +12,8 @@ public class App {
 		
 		
 		China bean = ApplicationContextUitl.getApplicationContextlzy().getBean(China.class);
-		bean.sayhello();
-
+//		bean.sayhello();
+		bean.sayhello("hello");
 	
 	}
 }

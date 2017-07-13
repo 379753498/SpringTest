@@ -14,8 +14,7 @@ public class JsonRootBean {
 
     @Override
 	public String toString() {
-		return "JsonRootBean [from=" + from + ", to=" + to + ", trans_result="
-				+"----翻译以前----"+ trans_result.get(0).getSrc()+"----翻译后---"+trans_result.get(0).getDst() + "]";
+		return "----翻译后---"+trans_result.get(0).getDst() + "]";
 	}
 	private String from;
     private String to;

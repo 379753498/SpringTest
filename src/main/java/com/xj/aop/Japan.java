@@ -10,6 +10,11 @@ public class Japan implements PeopleAopinterface {
 		System.out.println("China"+Japan.class.getName());
 	}
 
+	public String sayhello(String s) {
+		// TODO Auto-generated method stub  
+		return s;
+	}
+
 
 }
 

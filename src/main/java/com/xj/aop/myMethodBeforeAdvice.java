@@ -2,6 +2,7 @@ package com.xj.aop;
 
 import java.lang.reflect.Method;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -20,37 +21,43 @@ import org.springframework.stereotype.Component;
 @Component
 public class myMethodBeforeAdvice   {
 	
-	    @Pointcut("execution(* com.xj.aop.China.*(..))")  
-	    private void anyMethod(){}//定义一个切入点  
+	   
+	    @Pointcut("execution(* *sayhello(..))")  
+	    private void aspectJMethod(){};  
 	      
-	    @Before("anyMethod() && args(name)")  
-	    public void doAccessCheck(String name){  
-	        System.out.println(name);  
-	        System.out.println("前置通知");  
+	    @Before("aspectJMethod()")  
+	    public void doBefore(JoinPoint joinPoint){  
+	        System.out.println("----dobefore()开始----");  
+	       
+	    }  
+	    @Around("aspectJMethod()")  
+	    public Object doAround(ProceedingJoinPoint pjp) throws Throwable{  
+	          
+	        System.out.println("----doAround()开始----");  
+	   
+	        //核心逻辑  
+	        Object retval=pjp.proceed();  
+	       
+	          
+	        return retval;  
+	    }  
+	    @After(value="aspectJMethod()")  
+	    public void doAfter(JoinPoint joinPoint){  
+	        System.out.println("----doAfter()开始----");  
+	     
 	    }  
 	      
-	    @AfterReturning("anyMethod()")  
-	    public void doAfter(){  
-	        System.out.println("后置通知");  
+	    @AfterReturning(value="aspectJMethod()",returning="retval")  
+	    public void doReturn(JoinPoint joinPoint, String retval){  
+	        System.out.println("AfterReturning()开始");  
+	        
+	          
 	    }  
 	      
-	    @After("anyMethod()")  
-	    public void after(){  
-	        System.out.println("最终通知");  
+	    @AfterThrowing(value="aspectJMethod()", throwing="e")  
+	    public void doThrowing(JoinPoint joinPoint,Exception e){  
+	        System.out.println("-----doThrowing()开始-----");    
+	       
 	    }  
-	      
-	    @AfterThrowing("anyMethod()")  
-	    public void doAfterThrow(){  
-	        System.out.println("例外通知");  
-	    }  
-	      
-	    @Around("anyMethod()")  
-	    public Object doBasicProfiling(ProceedingJoinPoint pjp) throws Throwable{  
-	        System.out.println("进入环绕通知");  
-	        Object object = pjp.proceed();//执行该方法  
-	        System.out.println("退出方法");  
-	        return object;  
-	    }  
-	 
 
 }
