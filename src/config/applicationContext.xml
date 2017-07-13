@@ -9,15 +9,13 @@
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd
 	 http://www.springframework.org/schema/aop 
            http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
-	<!-- 这里配置Page类所在的包，不然框架讲无法找到对应的类	
-	 -->
+	<!-- 配置Spring自动装配功能 多个包用逗号隔开 -->
 	<context:component-scan base-package="com.xj.aop" />
-	
+	<!--  配置类级别拦截器 当容器加载类时就可以进行拦截处理-->
 	<bean id="MyBeanPostProcessor" class="com.xj.Spring.MyBeanPostProcessor"></bean>
 	  	<!--启用注解方式的AOP -->
-	  <aop:aspectj-autoproxy proxy-target-class="true"/>  
+	 <aop:aspectj-autoproxy proxy-target-class="true"/>  
 
 	
-  <!-- <aop:aspectj-autoproxy/>   -->
 	
 </beans>

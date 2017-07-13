@@ -24,11 +24,10 @@ public class China implements PeopleAopinterface {
 		// TODO Auto-generated method stub  
 		System.out.println("China"+China.class.getName()+name);
 	}
-	public String sayhello(String s) {
+	public String sayhello(String s)   {
 		// TODO Auto-generated method stub  
-		s=PeopleAopinterface.class.getClass().getName();
-		System.out.println(s);
-		return null;
+System.out.println(s);
+		return  s;
 	}
 
 	
